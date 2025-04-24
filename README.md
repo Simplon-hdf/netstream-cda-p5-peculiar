@@ -88,4 +88,6 @@ UPDATE
 
 ## Afficher les 3 derniers acteurs/actrices ajouté(e)s
 ```sql
+DELETE FROM Actor
+WHERE actor_firstname = 'Leonardo' AND actor_lastname = 'DiCaprio';
 ```
