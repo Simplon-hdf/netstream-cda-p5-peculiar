@@ -1,5 +1,7 @@
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
+CREATE TYPE role_type_enum AS ENUM ('Lead', 'Supporting', 'Cameo');
+
 DROP TABLE IF EXISTS 
   Archive,
   FAVORITE_MOVIE,
