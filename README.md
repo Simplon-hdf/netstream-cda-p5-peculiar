@@ -68,7 +68,7 @@ WHERE actor_firstname = 'Leonardo' and actor_lastname='DiCaprio';
 ## Ajouter un film
 ```sql
 INSERT INTO Movie(movie_title, movie_duration, movie_default_langage, movie_release_date)
-VALUES('Titanic', '3h 14m', 'English', '1997-12-19')
+VALUES('Titanic', '3h 14m', 'Français', '1997-12-19')
 ```
 
 ## Ajouter un acteur/actrice
@@ -79,15 +79,18 @@ VALUES('Leonardo', 'DiCaprio', 'Male', 'American', '1974-11-11')
 
 ## Modifier un film
 ```sql
-UPDATE
+UPDATE Movie
+SET movie_default_language = 'English'
+WHERE movie_title = 'Titanic';
 ```
 
 ## Supprimer un acteur/actrice
 ```sql
+DELETE FROM Actor
+WHERE actor_firstname = 'Leonardo' AND actor_lastname = 'DiCaprio';
 ```
 
 ## Afficher les 3 derniers acteurs/actrices ajouté(e)s
 ```sql
-DELETE FROM Actor
-WHERE actor_firstname = 'Leonardo' AND actor_lastname = 'DiCaprio';
+
 ```
