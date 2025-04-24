@@ -33,7 +33,7 @@ ORDER BY DATE DESC;
 SELECT actor_firstname, actor_lastname, EXTRACT(YEAR FROM CURRENT_DATE) - EXTRACT(YEAR FROM actor_birthdate) 
 as  actor_age
 FROM Actor
-WHERE actor_age > 30
+WHERE (EXTRACT(YEAR FROM CURRENT_DATE) - EXTRACT(YEAR FROM actor_birthdate))  > 30
 ORDER BY actor_firstname ;
 ```
 
@@ -41,19 +41,27 @@ ORDER BY actor_firstname ;
 ```sql
 SELECT actor_firstname, actor_lastname, movie_title
 FROM Actor
-JOIN Movie ON 
-JOIN PLAY_IN ON 
-JOIN Actor_role ON 
-JOIN PLAY_AS ON 
-JOIN Actor ON 
-WHERE actor_type = 'principal_role';
+
+JOIN PLAY_AS ON Actor.actor_id = PLAY_AS.actor_id
+JOIN Actor_role ON PLAY_AS.role_id = Actor_role.role_id
+JOIN PLAY_IN ON Actor_role.role_id = PLAY_AS.role_id
+JOIN Movie ON PLAY_IN.movie_id = Movie.movie_id
+
+WHERE Actor_role.actor_type = 'principal_role';
+WHERE Movie.movie_title ='Titanic';
 ```
 
 ## La liste des films pour un acteur/actrice donné
 ```sql
 SELECT movie_title
 FROM Movie
-JOIN 'faire le meme parcours jusqu à acteur ?'
+
+JOIN PLAY_IN ON Movie.movie_id = PLAY_IN.movie_id
+JOIN Actor_role ON PLAY_IN.role_id = Actor_role.role_id
+JOIN PLAY_AS ON Actor_role.role_id = PLAY_AS.role_id
+JOIN Actor ON PLAY_AS.actor_id = Actor.actor_id
+
+WHERE actor_firstname = 'Leonardo' and actor_lastname='DiCaprio';
 
 ```
 
