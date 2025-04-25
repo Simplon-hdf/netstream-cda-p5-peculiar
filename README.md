@@ -33,7 +33,7 @@ ORDER BY DATE DESC;
 SELECT actor_firstname, actor_lastname, EXTRACT(YEAR FROM CURRENT_DATE) - EXTRACT(YEAR FROM actor_birthdate) 
 as  actor_age
 FROM Actor
-WHERE (EXTRACT(YEAR FROM CURRENT_DATE) - EXTRACT(YEAR FROM actor_birthdate))  > 30
+WHERE EXTRACT(YEAR FROM CURRENT_DATE) - EXTRACT(YEAR FROM actor_birthdate)  > 30
 ORDER BY actor_firstname ;
 ```
 
@@ -47,8 +47,7 @@ JOIN Actor_role ON PLAY_AS.role_id = Actor_role.role_id
 JOIN PLAY_IN ON Actor_role.role_id = PLAY_AS.role_id
 JOIN Movie ON PLAY_IN.movie_id = Movie.movie_id
 
-WHERE Actor_role.actor_type = 'principal_role';
-WHERE Movie.movie_title ='Titanic';
+WHERE actor_type = 'principal_role';
 ```
 
 ## La liste des films pour un acteur/actrice donné
@@ -67,14 +66,15 @@ WHERE actor_firstname = 'Leonardo' and actor_lastname='DiCaprio';
 
 ## Ajouter un film
 ```sql
-INSERT INTO Movie(movie_title, movie_duration, movie_default_langage, movie_release_date)
-VALUES('Titanic', '3h 14m', 'Français', '1997-12-19')
+INSERT INTO Movie(movie_title, movie_duration, movie_default_language, movie_release_date, director_id)
+VALUES ('Mowgli: Legend of the Jungle', '1h 44m', 'English', '2018-12-07', 'cc6438e4-e083-4f80-b5a9-48044c2defbc');
 ```
 
 ## Ajouter un acteur/actrice
 ```sql
-INSERT INTO Actor(actor_firstname, actor_lastname, actor_gender, actor_nationality, actor_birthdate)
-VALUES('Leonardo', 'DiCaprio', 'Male', 'American', '1974-11-11')
+INSERT INTO Director(director_firstname, director_lastname, director_birthdate, director_nationality, director_gender)
+VALUES ('Hassan', 'Benjelloun', '1957-12-10', 'Moroccan', 'Male');
+
 ```
 
 ## Modifier un film
@@ -87,10 +87,14 @@ WHERE movie_title = 'Titanic';
 ## Supprimer un acteur/actrice
 ```sql
 DELETE FROM Actor
-WHERE actor_firstname = 'Leonardo' AND actor_lastname = 'DiCaprio';
+WHERE actor_firstname = 'Hassan' AND actor_lastname = 'Benjelloun';
 ```
 
 ## Afficher les 3 derniers acteurs/actrices ajouté(e)s
 ```sql
+SELECT actor_firstname, actor_lastname, actor_created_at
+FROM Actor
+ORDER BY actor_created_at DESC
+LIMIT 3;
 
 ```
