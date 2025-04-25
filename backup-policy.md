@@ -25,11 +25,34 @@ puis
 
 ## 2. 📁 Durée de Conservation
 
-**Les fichiers de sauvegarde sont conservés pendant 7 jours avant suppression automatique, afin d’optimiser l’espace disque.**
+Les sauvegardes sont conservées selon une politique de rétention multi-niveaux, inspirée des recommandations de **l’ANSSI**.
 
-- Durée de rétention : 7 jours
-- Suppression automatique : via un script cron
-- Répertoire de sauvegarde : `/home/<user>/Desktop/`
+### 🗓️ Stratégie de conservation :
+
+- 📅 **Sauvegarde quotidienne** : conservée pendant **7 jours**
+- 🗂️ **Sauvegarde hebdomadaire** : **1 sauvegarde par semaine est archivée** avant la purge des sauvegardes journalières
+- 📦 **Sauvegarde mensuelle** : **1 sauvegarde parmi les hebdomadaires est conservée chaque mois**
+
+> 🎯 **Objectifs :**
+>
+> - Ne jamais se retrouver sans sauvegarde si les fichiers quotidiens sont supprimés
+> - Disposer d’un **historique d’un mois minimum** avec une granularité **hebdomadaire**
+
+### 🔐 Politique de sauvegarde 3-2-1
+
+Il est **conseillé** de mettre en place la stratégie de sauvegarde **3-2-1**, recommandée par l’ANSSI :
+
+| **Principe**              | **Description**                                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **3 copies**              | Conserver **au moins trois copies** différentes des données (1 originale + 2 sauvegardes)                                  |
+| **2 supports différents** | Stocker les sauvegardes sur **au moins deux types de supports** (ex : disque local + cloud, ou NAS + clé USB)              |
+| **1 copie hors site**     | Stocker **une copie hors site** (cloud, externalisation, autre bâtiment) pour éviter les pertes totales en cas de sinistre |
+
+### 🧹 Suppression automatique des sauvegardes quotidiennes (au-delà de 7 jours)
+
+- **Durée de rétention** : 7 jours
+- **Suppression automatique** : via un script `cron`
+- **Répertoire de sauvegarde** : `/home/<user>/Desktop/`
 
 ```bash
 0 3 * * * find /home/<user>/Desktop/ -name "*.backup" -type f -mtime +7 -delete
