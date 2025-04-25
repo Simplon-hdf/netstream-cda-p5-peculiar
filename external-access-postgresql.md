@@ -25,7 +25,13 @@ Dans ce fichier, cherchez la ligne suivante :
 - `"*"` pour autoriser toutes les IP
 - ou une IP spécifique, comme `192.168.1.50`
 
-## ✅ 2. Modifier le fichier `pg_hba.conf`
+## ✅ 2. Vérifiez votre IP locale
+
+```zsh
+ifconfig | grep inet
+```
+
+## ✅ 3. Modifier le fichier `pg_hba.conf`
 
 Toujours dans le même dossier :
 
@@ -39,18 +45,12 @@ Ajoute une ligne à la fin pour autoriser les connexions d’une IP (exemple ici
 host    all             all             192.168.1.0/24          md5
 ```
 
-## ✅ 3. Redémarrer PostgreSQL
+## ✅ 4. Redémarrer PostgreSQL
 
 Sur macOS, via Homebrew :
 
 ```zsh
 brew services restart postgresql@<version>
-```
-
-## ✅ 4. Vérifiez votre IP locale
-
-```zsh
-ifconfig | grep inet
 ```
 
 ## ✅ 5. Ouvrir le port (si vous avez un pare-feu)
@@ -87,7 +87,7 @@ GRANT INSERT ON ALL TABLES IN SCHEMA public TO user1, user2;
 GRANT UPDATE ON ALL TABLES IN SCHEMA public TO user1, user2;
 GRANT DELETE ON ALL TABLES IN SCHEMA public TO user1, user2;
 -- ou en plus rapide--
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES TO user1, user2;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO user1, user2;
 ```
 
 ## ✅ 6. Tester la connexion distante
