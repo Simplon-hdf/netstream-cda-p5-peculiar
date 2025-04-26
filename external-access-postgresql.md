@@ -97,3 +97,90 @@ Depuis une autre machine :
 ```zsh
 psql -h <ip_du_mac> -U <utilisateur> -d <nom_bdd>
 ```
+
+# Se connecter à une base de données PostgreSQL (Linux)
+
+## ✅ 1. Modifier le fichier `postgresql.conf`
+
+Sous Linux, le fichier est souvent ici :
+
+```zsh
+sudo nano /etc/postgresql/<version>/main/postgresql.conf
+```
+
+Sinon, pour le trouver :
+
+```zsh
+sudo find / -name postgresql.conf
+```
+
+Dans ce fichier, repérez :
+
+```zsh
+#listen_addresses = 'localhost'
+```
+
+Décommentez et remplacez 'localhost' par :
+
+- "\*" pour accepter toutes les IP,
+- ou une IP spécifique, ex : 192.168.1.50.
+
+## ✅ 2. Vérifiez votre IP locale
+
+```zsh
+ip a | grep inet
+```
+
+## ✅ 3. Modifier le fichier pg_hba.conf
+
+```zsh
+sudo nano /etc/postgresql/<version>/main/pg_hba.conf
+```
+
+Ajoutez en bas du fichier :
+
+```zsh
+host    all             all             192.168.1.0/24          md5
+```
+
+## ✅ 4. Redémarrer PostgreSQL
+
+```zsh
+sudo systemctl restart postgresql
+```
+
+## ✅ 5. Ouvrir le port 5432 via UFW
+
+```zsh
+sudo ufw allow 5432
+```
+
+## ✅ 6. Créer un utilisateur PostgreSQL et lui accorder des privilèges
+
+➕ Lancer psql en tant que superutilisateur :
+
+```zsh
+sudo -u postgres psql
+```
+
+Dans le prompt :
+
+```zsh
+CREATE USER nom_utilisateur WITH PASSWORD 'motdepasse';
+```
+
+### 🔐 Accorder des privilèges sur une base
+
+Exemple :
+
+```zsh
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO user1, user2;
+```
+
+## ✅ 7. Tester la connexion distante
+
+Depuis une autre machine :
+
+```zsh
+psql -h <ip_du_serveur> -U <utilisateur> -d <nom_bdd>
+```
