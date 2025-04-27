@@ -63,7 +63,7 @@ La scalabilité d’un SGBDR détermine sa capacité à s’adapter à l’augme
 
 ### Résultats de benchmarks (sources)
 
-![Résultats de benchmarks (sources)](./images-schemas/stsq.png)
+![Résultats de benchmarks (sources)](./images/stsq.png)
 Les statistiques montrent que PostgreSQL continue de progresser, renforçant sa position par rapport aux années précédentes. À l'inverse, MySQL connaît une baisse marquée depuis avril 2024, tandis que SQLite, bien qu’il reste dans le top 10, reste stable sans grandes variations. Cela met en évidence la solidité croissante de PostgreSQL comme choix optimal.
 
 Et lors d'un test de performance avec 10 000 requêtes en lecture/écriture simultanées, les résultats étaient les suivants :

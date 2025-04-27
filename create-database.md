@@ -1,5 +1,5 @@
 # **Script de [génération de la base de données](./scripts/script.sql) pour la Plateforme NetStream**
-## ## Préparation de l'environnement de base de données
+## Préparation de l'environnement de base de données
 ```sql 
 CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 
@@ -141,3 +141,5 @@ CREATE TABLE PLAY_IN(
    FOREIGN KEY(role_id) REFERENCES Actor_Role(role_id)
 );
 ```
+
+## Insertion des données 
