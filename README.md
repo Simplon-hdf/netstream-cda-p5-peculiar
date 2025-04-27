@@ -7,14 +7,14 @@ Bienvenue sur le dépôt du projet de base de données pour une plateforme de st
 ##  Sommaire
 
 - [Règles de gestion](./regle-gestion.md)
-- [Dictionnaire de données](./dictionnary.md)
+- [Dictionnaire de données](./dictionary.md)
 - [MCD (Modèle Conceptuel de Données)](./mcd.md)
 - [MLD (Modèle Logique de Données)](./mld.md)
 - [MPD (Modèle Physique de Données)](./mpd.md)
-- [Script SQL](./script_creation_bdd.sql)
+- [Création de la base de données](./create-database.md)
 - [Les requêtes SQL ](#-les-requêtes-sql)
-- [Documentation d’installation et de configuration](./installation-configuration-bdd.md)
-- [Choix du SGBDR](#-choix-du-sgbdr)
+- [Documentation d’installation et de configuration de la base de données](./installation-and-configuration.md)
+- [Choix du SGBDR](./sgbdr-choice-and-benchmark.md)
 
 ---
 
