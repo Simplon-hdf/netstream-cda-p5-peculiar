@@ -2,26 +2,21 @@
 
 _Ce document présente le processus de sélection d’un SGBDR (Système de Gestion de Base de Données Relationnelle) pour le projet **NetStream (Plateforme de streaming)**, en se basant sur un benchmark des différentes solutions disponibles._
 
-- [Pourquoi un SGBDR ?]()
-- [Critères de sélection d’un SGBDR]()
+- [Pourquoi un SGBDR ?](#pourquoi-un-sgbdr)
+- [Critères de sélection d’un SGBDR](#critères-de-sélection-dun-sgbdr)
 
   - [Performance](#perfomance)
-  - [Scalabilité]()
-  - [Sécurité et contrôle d’accès]()
-  - [Types de données et extensibilité]()
+  - [Scalabilité](#scalabilité)
+  - [Sécurité et contrôle d’accès](#sécurité-et-contrôle-daccès)
+  - [Types de données et extensibilité](#types-de-données-et-extensibilité)
 
-- [Benchmark des SGBDR]()
+- [Benchmark des SGBDR](#benchmark-des-sgbdr)
 
-  - [PostgreSQL]()
-  - [MySQL]()
-  - [SQLite]()
+  - [PostgreSQL](#postgresql)
+  - [MySQL](#mysql)
+  - [SQLite](#sqlite)  
 
-- [Choix Final]()
-
-  - [Raison du SGBDR]()
-  - [Avantages et Inconvénients]()
-
-- [Résumé]()
+- [Choix Final](#choix-final)
 
 ## Pourquoi un SGBDR ?
 
@@ -68,7 +63,7 @@ La scalabilité d’un SGBDR détermine sa capacité à s’adapter à l’augme
 
 ### Résultats de benchmarks (sources)
 
-![Résultats de benchmarks (sources)](./images-schemas/stsq.png)
+![Résultats de benchmarks (sources)](./images/stsq.png)
 Les statistiques montrent que PostgreSQL continue de progresser, renforçant sa position par rapport aux années précédentes. À l'inverse, MySQL connaît une baisse marquée depuis avril 2024, tandis que SQLite, bien qu’il reste dans le top 10, reste stable sans grandes variations. Cela met en évidence la solidité croissante de PostgreSQL comme choix optimal.
 
 Et lors d'un test de performance avec 10 000 requêtes en lecture/écriture simultanées, les résultats étaient les suivants :
