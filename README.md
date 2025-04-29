@@ -47,7 +47,7 @@ JOIN Actor_role ON PLAY_AS.role_id = Actor_role.role_id
 JOIN PLAY_IN ON Actor_role.role_id = PLAY_AS.role_id
 JOIN Movie ON PLAY_IN.movie_id = Movie.movie_id
 
-WHERE actor_type = 'principal_role';
+WHERE LOWER(role_type) ='lead';
 ```
 
 ## La liste des films pour un acteur/actrice donné
@@ -67,7 +67,7 @@ WHERE actor_firstname = 'Leonardo' and actor_lastname='DiCaprio';
 ## Ajouter un film
 ```sql
 INSERT INTO Movie(movie_title, movie_duration, movie_default_language, movie_release_date, director_id)
-VALUES ('Mowgli: Legend of the Jungle', '1h 44m', 'English', '2018-12-07', 'cc6438e4-e083-4f80-b5a9-48044c2defbc');
+VALUES ('Mowgli: Legend of the Jungle', '1h 44m', 'English', '2018-12-07', '21cbfcbd-ae49-42fd-a8e8-d38fa7d42bf2');
 ```
 
 ## Ajouter un acteur/actrice
