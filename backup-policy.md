@@ -100,6 +100,9 @@ Cette politique protège contre plusieurs menaces potentielles :
 | **Erreur humaine (suppression)** | Récupération des données supprimées                              |
 | **Corruption de la base**        | Restauration d'une version propre et antérieure                  |
 | **Défaillance matérielle**       | Fichier de sauvegarde stocké séparément de la base en production |
+| **Ransomware**                   | Sauvegardes régulières hors-ligne et tests de restauration       |
+
+_Un ransomware est un logiciel malveillant (malware) qui bloque l’accès aux fichiers ou à ton système en les chiffrant. Ensuite, les cybercriminels demandent une rançon (souvent en cryptomonnaie) pour fournir la clé de déchiffrement_
 
 ## 5. ✅ Résumé
 
