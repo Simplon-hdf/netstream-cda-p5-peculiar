@@ -70,8 +70,7 @@ CREATE TABLE Archive(
    archive_old_value VARCHAR(254) NOT NULL,
    archive_field_name VARCHAR(30) NOT NULL,
    member_id UUID NOT NULL,
-   created_at TIMESTAMP NOT NULL DEFAULT now(),
-   updated_at TIMESTAMP NOT NULL DEFAULT now(),
+
    PRIMARY KEY(archive_id),
    FOREIGN KEY(member_id) REFERENCES Member_(member_id)
 );
