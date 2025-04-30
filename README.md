@@ -13,6 +13,8 @@ Bienvenue sur le dépôt du projet de base de données pour une plateforme de st
 - [MPD (Modèle Physique de Données)](./mpd.md)
 - [Création de la base de données](./create-database.md)
 - [Les requêtes SQL ](#les-requêtes-sql)
+- [Triggers de mise à jour automatique des données](./update-trigger.md)
+- [Politique de Rétention des Sauvegardes PostgreSQL](./backup-policy.md)
 - [Documentation d’installation et de configuration de la base de données](./installation-and-configuration.md)
 - [Choix du SGBDR](./sgbdr-choice-and-benchmark.md)
 
