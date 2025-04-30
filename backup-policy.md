@@ -1,5 +1,15 @@
 # 📦 Politique de Rétention des Sauvegardes PostgreSQL
 
+- [1. 📅 Fréquence des Sauvegardes](#1-📅-fréquence-des-sauvegardes)
+- [2. 📁 Durée de Conservation](#2-📁-durée-de-conservation)
+    - [Stratégie de conservation](#stratégie-de-conservation)
+    - [Politique de sauvegarde 3-2-1](#politique-de-sauvegarde-3-2-1)
+    - [Suppression automatique des sauvegardes](#suppression-automatique-des-sauvegardes-quotidiennes-au-delà-de-7-jours)
+- [3. ♻️ Procédure de Restauration](#3-♻️-procédure-de-restauration)
+- [4. 🔐 Menaces Ciblées par cette Politique](#4-🔐-menaces-ciblées-par-cette-politique)
+- [5. ✅ Résumé](#5-✅-résumé)
+
+
 ## 1. 📅 Fréquence des Sauvegardes
 
 **Les sauvegardes de la base de données sont effectuées à une fréquence quotidienne.**
@@ -27,7 +37,7 @@ puis
 
 Les sauvegardes sont conservées selon une politique de rétention multi-niveaux, inspirée des recommandations de **l’ANSSI**.
 
-### 🗓️ Stratégie de conservation :
+### Stratégie de conservation :
 
 - 📅 **Sauvegarde quotidienne** : conservée pendant **7 jours**
 - 🗂️ **Sauvegarde hebdomadaire** : **1 sauvegarde par semaine est archivée** avant la purge des sauvegardes journalières
@@ -38,7 +48,7 @@ Les sauvegardes sont conservées selon une politique de rétention multi-niveaux
 > - Ne jamais se retrouver sans sauvegarde si les fichiers quotidiens sont supprimés
 > - Disposer d’un **historique d’un mois minimum** avec une granularité **hebdomadaire**
 
-### 🔐 Politique de sauvegarde 3-2-1
+### Politique de sauvegarde 3-2-1
 
 Il est **conseillé** de mettre en place la stratégie de sauvegarde **3-2-1**, recommandée par l’ANSSI :
 
@@ -48,7 +58,7 @@ Il est **conseillé** de mettre en place la stratégie de sauvegarde **3-2-1**, 
 | **2 supports différents** | Stocker les sauvegardes sur **au moins deux types de supports** (ex : disque local + cloud, ou NAS + clé USB)              |
 | **1 copie hors site**     | Stocker **une copie hors site** (cloud, externalisation, autre bâtiment) pour éviter les pertes totales en cas de sinistre |
 
-### 🧹 Suppression automatique des sauvegardes quotidiennes (au-delà de 7 jours)
+### Suppression automatique des sauvegardes quotidiennes (au-delà de 7 jours)
 
 - **Durée de rétention** : 7 jours
 - **Suppression automatique** : via un script `cron`
