@@ -13,6 +13,8 @@ Bienvenue sur le dépôt du projet de base de données pour une plateforme de st
 - [MPD (Modèle Physique de Données)](./mpd.md)
 - [Création de la base de données](./create-database.md)
 - [Les requêtes SQL ](#les-requêtes-sql)
+- [Triggers de mise à jour automatique des données](./update-trigger.md)
+- [Politique de Rétention des Sauvegardes PostgreSQL](./backup-policy.md)
 - [Documentation d’installation et de configuration de la base de données](./installation-and-configuration.md)
 - [Choix du SGBDR](./sgbdr-choice-and-benchmark.md)
 
@@ -25,7 +27,7 @@ Bienvenue sur le dépôt du projet de base de données pour une plateforme de st
 ```sql
 SELECT movie_title, movie_release_date 
 FROM Movie 
-ORDER BY DATE DESC;
+ORDER BY movie_release_date DESC;
 ```
 
 ## Les noms, prénoms et âges des acteurs/actrices de plus de 30 ans dans l'ordre alphabétique
@@ -47,7 +49,7 @@ JOIN Actor_role ON PLAY_AS.role_id = Actor_role.role_id
 JOIN PLAY_IN ON Actor_role.role_id = PLAY_AS.role_id
 JOIN Movie ON PLAY_IN.movie_id = Movie.movie_id
 
-WHERE actor_type = 'principal_role';
+WHERE LOWER(role_type) ='lead';
 ```
 
 ## La liste des films pour un acteur/actrice donné
@@ -67,7 +69,7 @@ WHERE actor_firstname = 'Leonardo' and actor_lastname='DiCaprio';
 ## Ajouter un film
 ```sql
 INSERT INTO Movie(movie_title, movie_duration, movie_default_language, movie_release_date, director_id)
-VALUES ('Mowgli: Legend of the Jungle', '1h 44m', 'English', '2018-12-07', 'cc6438e4-e083-4f80-b5a9-48044c2defbc');
+VALUES ('Mowgli: Legend of the Jungle', '1h 44m', 'English', '2018-12-07', '21cbfcbd-ae49-42fd-a8e8-d38fa7d42bf2');
 ```
 
 ## Ajouter un acteur/actrice
