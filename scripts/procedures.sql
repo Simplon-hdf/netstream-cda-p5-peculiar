@@ -22,7 +22,6 @@ CREATE OR REPLACE PROCEDURE add_actor_with_role_to_film(
   p_gender VARCHAR,
   p_nationality VARCHAR,
   p_birthdate DATE,
-  p_created_at DATE,
   p_role_name VARCHAR,
   p_role_type role_type_enum,
   p_movie_title VARCHAR
@@ -34,29 +33,30 @@ DECLARE
   role_id UUID;
   movie_id UUID;
 BEGIN
-  -- Ajout de l'acteur 
+  -- Ajout de l'acteur
   INSERT INTO Actor (
     actor_firstname, actor_lastname, actor_gender,
-    actor_nationality, actor_birthdate, actor_created_at
+    actor_nationality, actor_birthdate
   ) VALUES (
     p_firstname, p_lastname, p_gender,
-    p_nationality, p_birthdate, p_created_at
-  ) RETURNING actor_id INTO actor_id;
+    p_nationality, p_birthdate
+  ) RETURNING Actor.actor_id INTO actor_id;
 
-  -- Ajout du role de l'acteur 
+  -- Ajout du rôle
   INSERT INTO Actor_Role (role_name, role_type)
   VALUES (p_role_name, p_role_type)
-  RETURNING role_id INTO role_id;
+  RETURNING Actor_Role.role_id INTO role_id;
 
-  -- Lier acteur & role 
+  -- Lier acteur & rôle
   INSERT INTO PLAY_AS (actor_id, role_id) VALUES (actor_id, role_id);
 
-  -- SELECT du film
-  SELECT movie_id INTO movie_id FROM Movie WHERE movie_title = p_movie_title;
+  -- Récupération du film
+  SELECT Movie.movie_id INTO movie_id FROM Movie WHERE movie_title = p_movie_title;
 
-  -- Lier un role a un film
+  -- Lier le rôle au film
   INSERT INTO PLAY_IN (movie_id, role_id) VALUES (movie_id, role_id);
 END;
 $$;
+
 
 
