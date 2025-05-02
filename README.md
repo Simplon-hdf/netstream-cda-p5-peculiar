@@ -27,7 +27,7 @@ Bienvenue sur le dépôt du projet de base de données pour une plateforme de st
 ```sql
 SELECT movie_title, movie_release_date
 FROM Movie
-ORDER BY DATE DESC;
+ORDER BY movie_release_date DESC;
 ```
 
 ## Les noms, prénoms et âges des acteurs/actrices de plus de 30 ans dans l'ordre alphabétique
